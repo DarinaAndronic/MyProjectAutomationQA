@@ -17,11 +17,11 @@ public class ShareData {
 
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
     }
-//    @AfterMethod
-//    public void clear()
-//    {
-//        driver.quit();
-//    }
+    @AfterMethod
+    public void clear()
+    {
+        driver.quit();
+    }
 
     public WebDriver getDriver() {
         return driver;
