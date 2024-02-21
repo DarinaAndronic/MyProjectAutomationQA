@@ -1,11 +1,18 @@
 package Pages.SignUP;
 
+import ObjectData.LogInSuccesObject;
+import ObjectData.SignUpSuccesObject;
 import Pages.BasePage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.time.Duration;
 
 public class SignUpSuccessPage extends BasePage {
+    // test
     public SignUpSuccessPage(WebDriver driver){
         super(driver);
     }
@@ -26,14 +33,18 @@ public class SignUpSuccessPage extends BasePage {
         SignUp.click();
     }
 
-    public void fillSignUserName(){
-        String signUserNameValue="Darina"+System.currentTimeMillis();
-        signUserName.sendKeys(signUserNameValue);
-    }
+//    public void fillSignUserName(){
+//        String signUserNameValue=UserNameValue+System.currentTimeMillis();
+//        signUserName.sendKeys(signUserNameValue);
+//    }
+//
+//    public void fillSignPassword(){
+//        signPassword.sendKeys(signPassValue);
+//    }
 
-    public void fillSignPassword(){
-        String signPassValue="123.!";
-        signPassword.sendKeys(signPassValue);
+    public void fillSignUpPage(SignUpSuccesObject signUpSuccesObject){
+        signUserName.sendKeys(signUpSuccesObject.getUserNameValue()+System.currentTimeMillis());
+        signPassword.sendKeys(signUpSuccesObject.getSignPassValue());
     }
 
     public void clickSignUpButton(){

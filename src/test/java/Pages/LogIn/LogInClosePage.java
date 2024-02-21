@@ -20,9 +20,9 @@ public class LogInClosePage extends BasePage {
     @FindBy(xpath = "//*[@id=\"logInModal\"]/div/div/div[3]/button[1]")
     private WebElement closebutton;
 
-    public WebElement getClosebutton(){
-        return closebutton;
-    }
+//   public WebElement getClosebutton(){
+//        return closebutton;
+//    }
     public void clickLogIn(){
         login.click();
     }

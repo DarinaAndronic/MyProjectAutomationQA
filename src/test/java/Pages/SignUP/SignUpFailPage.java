@@ -1,5 +1,7 @@
 package Pages.SignUP;
 
+import ObjectData.SignUpFailObject;
+import ObjectData.SignUpSuccesObject;
 import Pages.BasePage;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.WebDriver;
@@ -28,19 +30,25 @@ public class SignUpFailPage extends BasePage {
     @FindBy(xpath ="//*[@id='signInModal']/div/div/div[3]/button[2]")
     private WebElement SignUpButton;
 
-    public String signUserNameValue="Darina";
-    public String signPassValue="123.!";
+//    public String signUserNameValue="Darina";
+//    public String signPassValue="123.!";
 
     public void clickSignUp (){
         SignUp.click();
     }
 
-    public void fillSignUserName(){
-        signUserName.sendKeys(signUserNameValue);
-    }
+//    public void fillSignUserName(){
+//        signUserName.sendKeys(signUserNameValue);
+//    }
+//
+//    public void fillSignPassword(){
+//        signPassword.sendKeys(signPassValue);
+//    }
 
-    public void fillSignPassword(){
-        signPassword.sendKeys(signPassValue);
+    public void fillSignUpPage(SignUpFailObject signUpFailObject){
+
+        signUserName.sendKeys(signUpFailObject.getSignUserNameValue());
+        signPassword.sendKeys(signUpFailObject.getSignPassValue());
     }
 
     public void clickSignUpButton(){

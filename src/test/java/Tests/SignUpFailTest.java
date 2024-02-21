@@ -1,8 +1,10 @@
 package Tests;
 
+import ObjectData.SignUpFailObject;
 import Pages.SignUP.SignUpFailPage;
 import Pages.SignUP.SignUpSuccessPage;
 import ShareData.ShareData;
+import ShareData.Hooks;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -11,13 +13,13 @@ import org.testng.annotations.Test;
 
 import java.time.Duration;
 
-public class SignUpFailTest extends ShareData {
+public class SignUpFailTest extends Hooks {
     @Test
     public void TestMethod() {
+        SignUpFailObject signUpFailObject=new SignUpFailObject(testData);
         SignUpFailPage signUpFailPage = new SignUpFailPage(getDriver());
         signUpFailPage.clickSignUp();
-        signUpFailPage.fillSignUserName();
-        signUpFailPage.fillSignPassword();
+        signUpFailPage.fillSignUpPage(signUpFailObject);
         signUpFailPage.clickSignUpButton();
         signUpFailPage.signUpFailmessage();
 

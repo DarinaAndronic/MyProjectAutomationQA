@@ -1,5 +1,7 @@
 package Pages.LogIn;
 
+import ObjectData.LogInFailObject;
+import ObjectData.LogInSuccesObject;
 import Pages.BasePage;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.WebDriver;
@@ -17,30 +19,34 @@ public class LogInFailPage extends BasePage {
     }
 
     @FindBy(id = "login2")
-    private WebElement login;
+    public WebElement login;
 
     @FindBy(id = "loginusername")
-    private WebElement loginUsername;
+    public WebElement loginUsername;
 
     @FindBy(id = "loginpassword")
-    private WebElement loginPassword;
+    public WebElement loginPassword;
 
     @FindBy(xpath = "//*[@id=\"logInModal\"]/div/div/div[3]/button[2]")
-    private WebElement LogInButton;
-    public String loginUsernameValue = "meli";
-    public  String loginPasswordValue = "blabla";
+    public WebElement LogInButton;
+
+    @FindBy(xpath = "//*[@id=\"logInModal\"]/div/div/div[3]/button[1]")
+    private WebElement closebutton;
+
+//    public String loginUsernameValue = "meli";
+//    public  String loginPasswordValue = "blabla";
 
     public void clickLogIn() {
         login.click();
     }
 
-    public void fillLogInUsername() {
-        loginUsername.sendKeys(loginUsernameValue);
-    }
-
-    public void fillLogInPassword() {
-        loginPassword.sendKeys(loginPasswordValue);
-    }
+//
+public void fillLogInPage(LogInFailObject logInFailObject) {
+    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+    wait.until(ExpectedConditions.visibilityOf(loginPassword));
+    loginUsername.sendKeys(logInFailObject.getLoginUsernameValue());
+    loginPassword.sendKeys(logInFailObject.getLoginPasswordValue());
+}
 
     public void clickLoginButton() {
         LogInButton.click();
@@ -48,11 +54,16 @@ public class LogInFailPage extends BasePage {
 
     public void signInFailmessage(){
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-
         Alert alert = wait.until(ExpectedConditions.alertIsPresent());
         String alertmessage = alert.getText();
         Assert.assertEquals(alertmessage, "Wrong password.");
         alert.accept();
+    }
+
+    public void clickCloseLogIn(){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        wait.until(ExpectedConditions.visibilityOf(closebutton));
+        closebutton.click();
     }
 
 
